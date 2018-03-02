@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">Dawak</string>
+    <string name="some_error">Something went wrong</string>
+
+    <string name="nav_map">Map</string>
+    <string name="nav_cart">Cart</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_password">Password</string>
+    <string name="sign_in">Sign in</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="message_to_make_sign_up">Don\'t have account?</string>
+    <string name="error_no_iternet_connection">Check internet connection</string>
+    <string name="error_password_empty">Password is required</string>
+    <string name="error_email_required">Email is required</string>
+    <string name="error_invalid_email">Email is invalid</string>
+    <string name="ask">Ask</string>
+    <string name="hint_medicine_name">Medicine Name</string>
+    <string name="quantity">Quantity</string>
+    <string name="error_medicine_name_required">Medicine name is required</string>
+    <string name="add_successfully">Medicine added successfully</string>
+    <string name="pending">Pending</string>
+    <string name="available">Available</string>
+    <string name="not_available">Not Available</string>
+</resources>
