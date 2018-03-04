@@ -4,7 +4,6 @@ package com.example.dawak.ui.cart;
 import com.example.dawak.R;
 import com.example.dawak.data.DataManager;
 import com.example.dawak.model.Order;
-import com.example.dawak.ui.base.BaseLisener;
 import com.example.dawak.ui.base.BasePresenter;
 
 import java.util.ArrayList;
@@ -22,7 +21,6 @@ public class CartPresenter<V extends CartContract.View> extends BasePresenter<V>
     @Override
     public void getOrders(String userId) {
         if (getMvpView().isNetworkConnected()) {
-            getMvpView().showLoading();
             getDataManager().getOrders(userId, this);
         } else {
             getMvpView().showMessage(R.string.error_no_iternet_connection);
@@ -32,7 +30,6 @@ public class CartPresenter<V extends CartContract.View> extends BasePresenter<V>
     @Override
     public void onSuccess(ArrayList<Order> orders) {
         if (isViewAttached()) {
-            getMvpView().hideLoading();
             getMvpView().showOrders(orders);
         }
     }
@@ -40,7 +37,6 @@ public class CartPresenter<V extends CartContract.View> extends BasePresenter<V>
     @Override
     public void onOrderAdded(Order order) {
         if (isViewAttached()) {
-            getMvpView().hideLoading();
             getMvpView().onOrderAdded(order);
         }
     }
@@ -48,7 +44,6 @@ public class CartPresenter<V extends CartContract.View> extends BasePresenter<V>
     @Override
     public void onOrderChange(Order order) {
         if (isViewAttached()) {
-            getMvpView().hideLoading();
             getMvpView().onOrderChange(order);
         }
     }
@@ -56,7 +51,6 @@ public class CartPresenter<V extends CartContract.View> extends BasePresenter<V>
     @Override
     public void onFail(String error) {
         if (isViewAttached()) {
-            getMvpView().hideLoading();
             getMvpView().showMessage(error);
         }
     }

@@ -9,7 +9,7 @@
         android:id="@+id/imageView"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
         android:src="@drawable/ic_pharmacy"
         app:layout_constraintBottom_toTopOf="@id/nameTV"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -41,7 +41,7 @@
         android:layout_height="21dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:text="Open : "
+        android:text="@string/open"
         app:layout_constraintStart_toEndOf="@+id/imageView"
         app:layout_constraintTop_toBottomOf="@+id/phoneTV" />
 
@@ -64,7 +64,7 @@
         android:layout_height="21dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:text="Close : "
+        android:text="@string/close"
         app:layout_constraintStart_toEndOf="@+id/imageView"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 

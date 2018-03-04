@@ -14,7 +14,6 @@ import com.example.dawak.R;
 import com.example.dawak.ui.base.BaseActivity;
 import com.example.dawak.ui.cart.CartFragment;
 import com.example.dawak.ui.map.MapFragment;
-import com.example.dawak.ui.signup.SignUpActivity;
 
 import javax.inject.Inject;
 

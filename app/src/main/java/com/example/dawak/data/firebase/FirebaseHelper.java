@@ -9,8 +9,6 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 
-import java.util.ArrayList;
-
 /**
  * Created by Mohamed Fakhry on 18/02/2018.
  */
@@ -23,7 +21,7 @@ public interface FirebaseHelper {
 
     void getNearPharmacies(LatLng location, BaseLisener<Pharmacy, String> lisener);
 
-    void askMedicine(Order medicine, BaseLisener<Boolean , String> lisener);
+    void askMedicine(Order medicine, BaseLisener<Boolean, String> lisener);
 
     void getOrders(String userId, CartContract.Interactor lisener);
 }

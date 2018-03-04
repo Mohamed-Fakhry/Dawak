@@ -1,11 +1,15 @@
 package com.example.dawak.ui.cart.adapter;
 
+import android.appwidget.AppWidgetManager;
+import android.content.ComponentName;
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import com.example.dawak.R;
 import com.example.dawak.model.Order;
+import com.example.dawak.ui.widget.DawakWidget;
 
 import java.util.ArrayList;
 

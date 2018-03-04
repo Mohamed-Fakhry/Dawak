@@ -2,11 +2,13 @@ package com.example.dawak.model;
 
 import com.google.firebase.database.Exclude;
 
+import java.io.Serializable;
+
 /**
  * Created by Mohamed Fakhry on 01/03/2018.
  */
 
-public class Order {
+public class Order implements Serializable {
 
     private String id;
 

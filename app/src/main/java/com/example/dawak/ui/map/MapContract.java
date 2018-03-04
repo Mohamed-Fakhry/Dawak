@@ -6,8 +6,6 @@ import com.example.dawak.ui.base.MvpPresenter;
 import com.example.dawak.ui.base.MvpView;
 import com.google.android.gms.maps.model.LatLng;
 
-import java.util.ArrayList;
-
 public interface MapContract {
 
     interface View extends MvpView {

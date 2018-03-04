@@ -22,4 +22,11 @@
     <string name="pending">Pending</string>
     <string name="available">Available</string>
     <string name="not_available">Not Available</string>
+    <string name="open">Open :</string>
+    <string name="close">Close :</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
+    <string name="empty_string">No orders</string>
+    <string name="go_login">Go Login</string>
+    <string name="go_map">Go Map</string>
 </resources>

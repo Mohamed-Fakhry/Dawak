@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -42,7 +43,7 @@ public class PharmacyDetailsActivity extends BaseActivity implements PharmacyDet
 
     public static Intent getStartIntent(Context context, Pharmacy pharmacy) {
         Intent intent = new Intent(context, PharmacyDetailsActivity.class);
-        intent.putExtra(EXTRA_PHARMACY, pharmacy);
+        intent.putExtra(EXTRA_PHARMACY, (Parcelable) pharmacy);
         return intent;
     }
 

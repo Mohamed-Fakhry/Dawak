@@ -5,7 +5,9 @@ import android.os.Parcelable;
 
 import com.google.firebase.database.Exclude;
 
-public class Pharmacy implements Parcelable {
+import java.io.Serializable;
+
+public class Pharmacy implements Parcelable, Serializable {
 
     private String id;
     private String name;

@@ -1,5 +1,7 @@
 package com.example.dawak.ui.cart;
 
+import android.appwidget.AppWidgetManager;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -14,6 +16,7 @@ import com.example.dawak.di.component.ActivityComponent;
 import com.example.dawak.model.Order;
 import com.example.dawak.ui.base.BaseFragment;
 import com.example.dawak.ui.cart.adapter.OrderAdapter;
+import com.example.dawak.ui.widget.DawakWidget;
 
 import java.util.ArrayList;
 
@@ -21,7 +24,6 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.Unbinder;
 
 public class CartFragment extends BaseFragment implements CartContract.View {
 
@@ -61,7 +63,7 @@ public class CartFragment extends BaseFragment implements CartContract.View {
             String userId = preferences.getString("userId", null);
             presenter.getOrders(userId);
         }
-
+        updateWidget();
         orderRV.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
         orderRV.setAdapter(adapter);
     }
@@ -84,4 +86,13 @@ public class CartFragment extends BaseFragment implements CartContract.View {
     public void onOrderChange(Order order) {
         adapter.change(order);
     }
+
+    public void updateWidget() {
+        AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(getBaseActivity());
+        int[] appWidgetIds = appWidgetManager.getAppWidgetIds(new ComponentName(getBaseActivity(), DawakWidget.class));
+
+        DawakWidget.updateOrdersWidgets(getBaseActivity(), appWidgetManager, appWidgetIds);
+        appWidgetManager.notifyAppWidgetViewDataChanged(appWidgetIds, R.id.messageTV);
+    }
+
 }
