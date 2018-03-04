@@ -14,6 +14,9 @@ import com.example.dawak.model.Pharmacy;
 import com.example.dawak.ui.base.BaseActivity;
 import com.shawnlin.numberpicker.NumberPicker;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+
 import javax.inject.Inject;
 
 import butterknife.BindView;
@@ -23,6 +26,9 @@ import butterknife.OnClick;
 public class PharmacyDetailsActivity extends BaseActivity implements PharmacyDetailsContract.View {
 
     private static final String EXTRA_PHARMACY = "EXTRA_PHARMACY";
+    private static final String MEDICIEN_NAME = "MEDICIEN_NAME";
+    private static final String QUANTITY_KEY = "QUANTITY_KEY";
+
     private Pharmacy pharmacy;
 
     @Inject
@@ -55,7 +61,27 @@ public class PharmacyDetailsActivity extends BaseActivity implements PharmacyDet
         if (getIntent().getParcelableExtra(EXTRA_PHARMACY) != null) {
             pharmacy = getIntent().getParcelableExtra(EXTRA_PHARMACY);
         }
+
+        if (savedInstanceState != null) {
+            String medicineName = savedInstanceState.getString(MEDICIEN_NAME);
+            int quantity = savedInstanceState.getInt(QUANTITY_KEY, 1);
+
+            if (medicineName != null) {
+                medicineNameET.setText(medicineName);
+            }
+            quantityNP.setValue(quantity);
+        }
+
         setUp();
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        String medicineName = medicineNameET.getText().toString();
+        int quantity = quantityNP.getValue();
+        outState.putString(MEDICIEN_NAME, medicineName);
+        outState.putInt(QUANTITY_KEY, quantity);
     }
 
     @Override

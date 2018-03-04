@@ -64,4 +64,8 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderVH> {
     public int getItemCount() {
         return orders.size();
     }
+
+    public ArrayList<Order> getOrders() {
+        return orders;
+    }
 }

@@ -1,7 +1,5 @@
 package com.example.dawak.ui.cart;
 
-import android.appwidget.AppWidgetManager;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -16,7 +14,8 @@ import com.example.dawak.di.component.ActivityComponent;
 import com.example.dawak.model.Order;
 import com.example.dawak.ui.base.BaseFragment;
 import com.example.dawak.ui.cart.adapter.OrderAdapter;
-import com.example.dawak.ui.widget.DawakWidget;
+import com.example.dawak.ui.widget.WidgetUpdateService;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 
@@ -63,7 +62,6 @@ public class CartFragment extends BaseFragment implements CartContract.View {
             String userId = preferences.getString("userId", null);
             presenter.getOrders(userId);
         }
-        updateWidget();
         orderRV.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
         orderRV.setAdapter(adapter);
     }
@@ -80,19 +78,23 @@ public class CartFragment extends BaseFragment implements CartContract.View {
     @Override
     public void onOrderAdded(Order order) {
         adapter.addOrder(order);
+        updateWidget();
     }
 
     @Override
     public void onOrderChange(Order order) {
         adapter.change(order);
+        updateWidget();
     }
 
     public void updateWidget() {
-        AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(getBaseActivity());
-        int[] appWidgetIds = appWidgetManager.getAppWidgetIds(new ComponentName(getBaseActivity(), DawakWidget.class));
-
-        DawakWidget.updateOrdersWidgets(getBaseActivity(), appWidgetManager, appWidgetIds);
-        appWidgetManager.notifyAppWidgetViewDataChanged(appWidgetIds, R.id.messageTV);
+        ArrayList<Order> orders = adapter.getOrders();
+        String ordersJson = new Gson().toJson(orders);
+        try {
+            SharedPreferences preferences = getActivity().getApplicationContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+            preferences.edit().putString("orders", ordersJson).apply();
+            WidgetUpdateService.startActionUpdateAppWidgets(getBaseActivity(), orders);
+        }catch (Exception e) {}
     }
 
 }
